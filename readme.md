@@ -1,20 +1,24 @@
-#YourFitnessPal
+#DatePage
 
 [YourFitnessPal on Heroku](https://fast-plains-62115.herokuapp.com)
 
 ---
 ##Overview
-YourFitnessPal is a web app designed to allow users to manage their calorie intake according to their BMR(Basic Metabolism Rate).
+DatePage is a web app designed to allow users to...
 
 ##Screenshot
 ![Screen Shot](app/assets/images/Main Page.jpg)
 
 
 ##Technologies Used
-- Ruby on Rails
-- PostgreSQL
+- Mongo Database, 
+- Angular.js
+- Express
+- Node.js
+- Javascript
+- HTML
+- CSS
 - Bootstrap
-- HTML/CSS
 
 ##Credits
 This app is basically a remake of the infamous "MyFitnessPal" at [MyFitnessPal.com: Free Calorie Counter, Diet & Exercise Journal](http://www.myfitnesspal.com/)
@@ -23,10 +27,10 @@ This app is basically a remake of the infamous "MyFitnessPal" at [MyFitnessPal.c
 
 | As a ... | I'd like to ... |
 | ---------|-----------------|
-|User|Create my account and store my name, e-mail, age, gender, height, and weight.|
-|User|Be directed to my personal profile where my BMR is displayed after login.|
-|User|Have a form where I can input calorie consumption for breakfast, lunch, dinner, and snack.|
-|User|Be able to view my record of calorie consumption on a certain day by navigating through a calendar|
+|User|Login via my facebook account.|
+|User|Be directed to my personal profile where all my facebook friends' profile picture are displayed in grids.|
+|User|Have a selection under each picture on whether the friend is "Would definitely hangout", "Interesting", "Not Interesting", "Like a Stranger".|
+|User|Be able to receive an email notification when the friend and I both selected "Interesting" on each other's profile picture|
 
 ##Installation
 
@@ -35,6 +39,6 @@ Just login and start using!
 
 ##Future Updates
 
-- Implement a food database to replace manual input
-- Implement user photo uploads
-- Better display of calorie log
+- Placeholder
+- Placeholder
+- Placeholder
