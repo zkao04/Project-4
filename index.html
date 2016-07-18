@@ -3,17 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>DatePage</title>
+    script <script src="index.js" charset="utf-8"></script>
   </head>
-  <body>
+  <body ng-app="">
     <script>
       // Setup for obtaining Facebook SDK for JavaScript
       // https://developers.facebook.com/quickstarts/1766132520340607/?platform=web
       window.fbAsyncInit = function() {
         FB.init({
-      appId      : '1766132520340607',
-      xfbml      : true,
-      version    : 'v2.7'
-        });
+          appId: '1766132520340607',
+          xfbml: true,
+          version: 'v2.7'
+          });
       };
 
       (function(d, s, id){
@@ -22,7 +23,9 @@
         js = d.createElement(s); js.id = id;
         js.src = "//connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
+        }(document, 'script', 'facebook-jssdk'));
     </script>
+
+    <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
   </body>
 </html>
