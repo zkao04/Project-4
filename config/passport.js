@@ -1,13 +1,12 @@
-var LocalStrategy    = require('passport-local').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
-
+var passport = require('passport');
 // load up the user model
-var User       = require('../app/models/user');
+var User = require('../app/models/user');
 
 // load the auth variables
 var configAuth = require('./auth');
 
-module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
@@ -22,17 +21,14 @@ module.exports = function(passport) {
     });
 
     passport.use(new FacebookStrategy({
-
         // pull in our app id and secret from our auth.js file
         clientID        : configAuth.facebookAuth.clientID,
         clientSecret    : configAuth.facebookAuth.clientSecret,
         callbackURL     : configAuth.facebookAuth.callbackURL
-
     },
 
     // facebook will send back the token and profile
     function(token, refreshToken, profile, done) {
-
         // asynchronous
         process.nextTick(function() {
 
@@ -49,7 +45,7 @@ module.exports = function(passport) {
                     return done(null, user); // user found, return that user
                 } else {
                     // if there is no user found with that facebook id, create them
-                    var newUser            = new User();
+                    var newUser = new User();
 
                     // set all of the facebook information in our user model
                     newUser.facebook.id    = profile.id; // set the users facebook id
@@ -72,4 +68,4 @@ module.exports = function(passport) {
 
     }));
 
-};
+module.exports = passport

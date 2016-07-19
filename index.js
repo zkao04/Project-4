@@ -10,14 +10,15 @@ var
   bodyParser = require('body-parser'),
   session = require('express-session'),
   configDB = require('./config/database.js'),
-  dotevn = require('dotenv').load({silent: true})
+  dotevn = require('dotenv').load({silent: true}),
+  passportConfig = require('./config/passport')
 
 mongoose.connect(process.env.DB_URL, function(err){
   if(err) return console.log(err);
   console.log("Connected to MongoDB (DatePage)");
 })
 
-// require('./config/passport')(passport);
+
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
