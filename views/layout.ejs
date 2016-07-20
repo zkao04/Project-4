@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>DatePage</title>
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.js" integrity="sha256-6HSLgn6Ao3PKc5ci8rwZfb//5QUu3ge2/Sw9KfLuvr8=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+  <style>
+  .navbar-inverse {
+    background-color: rgba(34,34,34,.85);
+  }
+  .navbar-brand {
+    height: 50px;
+    width: 60px;
+  }
+  #login-dp {
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow: hidden;
+  }
+
+  .front-page {
+    height: 103%;
+    width: 100%;
+    margin-top: -30px;
+    opacity: 0.8;
+    position: absolute;
+    top: 0;
+    z-index: -10;
+  }
+
+  .jumbotron {
+    background: rgba(34, 34, 34, 0.85);
+    color: #e9be56;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    margin-bottom: 0;
+  }
+
+  .btn {
+    background: #e9be56;
+    color: #222;
+  }
+  .navbar-button {
+    color: #e9be56;
+  }
+
+  .well {
+    background: rgba(34, 34, 34, 0.85);
+    color: #e9be56;
+  }
+
+  .table-header {
+    background-color: rgba(34, 34, 34, 0.85);
+    color: white;
+  }
+
+  .slideIt tbody {
+    display:block;
+  }
+
+  td {
+    border: 1px solid #222;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  tr {
+    border: 1px solid #222;
+    vertical-align: middle;
+  }
+
+  th {
+    border-bottom: #222 !important;
+    text-align: center;
+  }
+
+  .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    border-top: none;
+  }
+
+  .right-inner-addon {
+    position: relative;
+  }
+  .right-inner-addon input {
+    padding-right: 30px;
+  }
+  .right-inner-addon i {
+    position: absolute;
+    right: 0px;
+    padding: 15px 12px;
+    pointer-events: none;
+  }
+
+  .dateForTable {
+    background-color: #659B7B;
+    border: 1px solid black;
+    color: black;
+  }
+
+  #pop-up {
+    display: none;
+    position: absolute;
+  }
+
+  </style>
+</head>
+<body>
+
+  <header><% include partials/navbar %></header>
+
+  <%- body %>
+
+</body>
+</html>

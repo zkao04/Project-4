@@ -1,0 +1,80 @@
+<!-- <script src="https://code.jquery.com/jquery-3.1.0.js"></script> -->
+
+<form method="POST" action="/profile/edit">
+  <input type="hidden" name="_method" value="PATCH">
+  <input type="text" placeholder="Email" name="email" value="<%= currentUser.email || '' %>">
+  <input type="text" placeholder="Age" name="age" value="<%= currentUser.age || '' %>">
+  <input type="text" placeholder="Gender" name="gender" value="<%= currentUser.gender || '' %>">
+  <input type="file" id="file-input" placeholder="avatar" name="file">
+  <input type="hidden" id="image-file" name="avatarUrl" value="">
+
+  <button type="submit">Update Profile</button>
+</form>
+
+<div id="image">
+
+</div>
+<script>
+    function uploadFile(file, signedRequest, url){
+      const xhr = new XMLHttpRequest();
+      xhr.open('PUT', signedRequest);
+
+
+    // the below code runs once a file has been added to the input field
+    xhr.onreadystatechange = () => {
+
+    if(xhr.readyState === 4){
+    if(xhr.status === 200){
+      console.log("Image URL:")
+      console.log(url)
+
+      document.getElementById('image-file').value = url;
+      $('#image').append('<img src="' + url + '" />')
+
+    }
+    else{
+     alert('Could not upload file.');
+    }
+    }
+    };
+    xhr.send(file);
+    }
+
+    function getSignedRequest(file){
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+      xhr.onreadystatechange = () => {
+      if(xhr.readyState === 4){
+        if(xhr.status === 200){
+         const response = JSON.parse(xhr.responseText);
+         console.log(xhr.responseText);
+         uploadFile(file, response.signedRequest, response.url);
+        }
+        else{
+         alert('Could not get signed URL.');
+        }
+      }
+    };
+      xhr.send();
+    }
+
+    /*
+    Function called when file input updated. If there is a file selected, then
+    start upload procedure by asking for a signed request from the app.
+    */
+    function initUpload(){
+    const files = document.getElementById('file-input').files;
+    const file = files[0];
+    if(file == null){
+    return alert('No file selected.');
+    }
+    getSignedRequest(file);
+    }
+
+    /*
+    Bind listeners when the page loads.
+    */
+    (() => {
+    document.getElementById('file-input').onchange = initUpload;
+    })();
+</script>

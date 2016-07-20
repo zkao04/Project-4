@@ -1,4 +1,4 @@
-
+var User = require('./models/user.js')
 module.exports = function(app, passport) {
 
     // route for home page
@@ -22,10 +22,32 @@ module.exports = function(app, passport) {
 
     // route for showing the profile page
     app.get('/profile', isLoggedIn, function(req, res) {
+      if(req.user.email && req.user.age && req.user.gender) {
         res.render('profile.ejs', {
             user : req.user // get the user out of session and pass to template
         });
+      } else {
+        res.redirect('/profile/edit')
+      }
     });
+
+    app.get('/profile/edit/:id', isLoggedIn, function(req, res) {
+      User.findOne({_id: req.user._id}, req.body, function(err, user) {
+        if(err) return console.log(err)
+        res.render('edit-profile.ejs')
+      })
+    })
+
+    app.patch('/profile/edit', function(req, res) {
+      console.log(req.body)
+      console.log("The info being updated:")
+      console.log(req.body)
+      User.findOneAndUpdate({_id: req.user._id}, req.body, function(err, user) {
+        if(err) return console.log(err)
+        res.redirect('/profile')
+      })
+
+    })
 
     app.get('/logout', function(req, res) {
         req.logout();
