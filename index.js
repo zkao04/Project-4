@@ -13,9 +13,10 @@ var
   methodOverride = require('method-override'),
   session = require('express-session'),
   configDB = require('./config/database.js'),
-  dotevn = require('dotenv').load({silent: true}),
+  dotenv = require('dotenv').load({silent: true}),
   passportConfig = require('./config/passport'),
-  aws = require('aws-sdk')
+  aws = require('aws-sdk'),
+  routes = require('./routes/user.js')
 
 const S3_BUCKET = process.env.S3_BUCKET
 
@@ -27,6 +28,7 @@ mongoose.connect(process.env.DB_URL, function(err){
 
 
 // set up our express application
+app.use(express.static('./public'))
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms
@@ -86,14 +88,18 @@ app.get('/sign-s3', function(req, res) {
  })
 })
 
-app.get('/')
+app.get('/', function(req, res) {
+  res.render('index.ejs')
+})
+
+app.use('/', routes)
 
 app.post('/upload', function(req, res) {
  res.json({message: "POSTED", body: req.body})
 })
 
 // routes ======================================================================
-require('./app/routes.js')(app, passport);
+// require('./app/routes.js')(app, passport);
 // load our routes and pass in our app and fully configured passport
 
 // launch ======================================================================

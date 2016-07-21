@@ -10,6 +10,18 @@
   <body>
     <div class="container">
       <div class="page-header">
+        <% if (user.local.firstName) { %>
+        <h1>
+          <span class=""></span> Hi! <%= user.local.firstName %>
+          <span class=""></span><%= user.local.lastName %>
+        </h1>
+        <ul>
+          <li>profile photo: <img style="max-width:100px" src="<%= user.avatarUrl %>"></li>
+          <li>email: <%= user.local.email %></li>
+          <li>age: <%= user.local.age %></li>
+          <li>gender: <%= user.local.gender %></li>
+        </ul>
+        <% } else { %>
         <h1><span class="fa fa-anchor"></span> Hi! <%= user.facebook.name %></h1>
         <ul>
           <li>profile photo: <img style="max-width:100px" src="<%= user.avatarUrl %>"></li>
@@ -17,6 +29,14 @@
           <li>age: <%= user.age %></li>
           <li>gender: <%= user.gender %></li>
         </ul>
+        <% } %>
+
+        <!-- <ul>
+          <li>profile photo: <img style="max-width:100px" src="<%= user.avatarUrl %>"></li>
+          <li>email: <%= user.local.email %></li>
+          <li>age: <%= user.local.age %></li>
+          <li>gender: <%= user.local.gender %></li>
+        </ul> -->
         <a href="/profile/edit/<%= user._id %>" class="btn btn-default btn-sm">Edit</a>
       </div>
       <div class="row">
@@ -77,4 +97,5 @@
   </body>
 </html>
 
-<!--Add a link to SPA, when click on it will direct to angular app  -->
+<!-- Obtaining images posted by other users -->
+<!-- Display it on this page -->

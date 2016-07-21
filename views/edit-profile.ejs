@@ -18,26 +18,20 @@
     function uploadFile(file, signedRequest, url){
       const xhr = new XMLHttpRequest();
       xhr.open('PUT', signedRequest);
-
-
     // the below code runs once a file has been added to the input field
-    xhr.onreadystatechange = () => {
-
-    if(xhr.readyState === 4){
-    if(xhr.status === 200){
-      console.log("Image URL:")
-      console.log(url)
-
-      document.getElementById('image-file').value = url;
-      $('#image').append('<img src="' + url + '" />')
-
-    }
-    else{
-     alert('Could not upload file.');
-    }
-    }
-    };
-    xhr.send(file);
+      xhr.onreadystatechange = () => {
+        if(xhr.readyState === 4){
+          if(xhr.status === 200){
+            console.log("Image URL:")
+            console.log(url)
+            document.getElementById('image-file').value = url;
+            $('#image').append('<img src="' + url + '" />')
+        } else {
+          alert('Could not upload file.');
+        }
+        }
+      };
+      xhr.send(file);
     }
 
     function getSignedRequest(file){
