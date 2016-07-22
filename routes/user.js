@@ -84,19 +84,35 @@ userRouter.post('/users/like/:id', function(req, res) {
 
 
     // save the currently logged in user
-    //
-    // user.save(function(err) {
-    //   if(err) return console.log(err)
-    //   //mongoose pull to see if i'm in this person's like array
-    //   if(theres a match) {
-    //
-    //   } else {
-    //     // send back full current user object, including user objects in 'likes' array...
-    //     User.populate(user, {path: 'likes'}, function(err, user) {
-    //       res.json({success: true, user: user, match: false})
-    //     })
-    //   }
-    // })
+
+    user.save(function(err) {
+      console.log(String(user.likes[0]))
+      User.findById(req.params.id, function(err, likedUser) {
+        if(err) return console.log(err)
+        for(var i = 0; i < likedUser.likes.length; i += 1) {
+          if(String(likedUser.likes[i]) == String(req.user._id)) {
+            return res.json({success: true, user: user, match: true})
+            break;
+          }
+        }
+        res.json({success: true, user: user, match: false})
+      })
+      
+
+    })
+  })
+})
+
+userRouter.get('/test-adriana', function(req, res){
+  User.findById(req.user._id, function(err, user) {
+    if(err) return console.log(err)
+    for(var i = 0; i < user.likes.length; i += 1) {
+      if(user.likes[i] == "579182864b60ecf94583bb27") {
+        return res.json({message: 'user contains adriana'})
+        break;
+      }
+    }
+    res.json({message: 'user needs to try harder...'})
   })
 })
 

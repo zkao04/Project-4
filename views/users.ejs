@@ -24,6 +24,8 @@
       url: '/users/like/' + userId,
       success: function(data) {
         console.log(data)
+
+        // show something on when there's a match
         if(data.match == true) {
           console.log("They like each other!")
         } else {
