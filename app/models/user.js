@@ -26,7 +26,8 @@ var
     email: String,
     age: Number,
     gender: String,
-    avatarUrl: String
+    avatarUrl: String,
+    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
   });
 
 // generating a hash

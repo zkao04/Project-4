@@ -67,7 +67,38 @@ userRouter.get('/auth/facebook/callback',
   )
 );
 
+userRouter.get('/users', isLoggedIn, function(req, res) {
+  User.find({}, function(err, users) {
+    if(err) return console.log(err)
+    res.render('users.ejs', {users: users})
+  })
+})
 
+userRouter.post('/users/like/:id', function(req, res) {
+  // find the currently logged in user
+  User.findById(req.user._id, function(err, user) {
+    if(err) return console.log(err)
+
+    // add the id of the user that was liked, to the currently logged in user's 'likes' array...
+    user.likes.push(req.params.id)
+
+
+    // save the currently logged in user
+    //
+    // user.save(function(err) {
+    //   if(err) return console.log(err)
+    //   //mongoose pull to see if i'm in this person's like array
+    //   if(theres a match) {
+    //
+    //   } else {
+    //     // send back full current user object, including user objects in 'likes' array...
+    //     User.populate(user, {path: 'likes'}, function(err, user) {
+    //       res.json({success: true, user: user, match: false})
+    //     })
+    //   }
+    // })
+  })
+})
 
 
 function isLoggedIn(req, res, next) {

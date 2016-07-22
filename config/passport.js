@@ -103,7 +103,6 @@ var configAuth = require('./auth');
                 newUser.save(function(err) {
                   if (err)
                     throw err;
-
                         // if successful, return the new user
                     return done(null, newUser);
                   });
