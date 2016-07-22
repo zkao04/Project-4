@@ -1,6 +1,6 @@
 #DatePage
 
-[YourFitnessPal on Heroku](https://fast-plains-62115.herokuapp.com)
+
 
 ---
 ##Overview
@@ -9,12 +9,11 @@ DatePage is a web app designed to allow users to meet new people on the web and 
 
 ##Technologies Used
 - Mongo Database, 
-- Angular.js
-- Express
-- Node.js
-- Javascript
-- HTML
-- CSS
+- Express,
+- Node.js,
+- Javascript,
+- HTML,
+- CSS,
 - Bootstrap
 
 ##User Stories
@@ -28,11 +27,16 @@ DatePage is a web app designed to allow users to meet new people on the web and 
 
 ##Installation
 
-Just login and start using!
+Just login at [DatePage](https://shielded-waters-54112.herokuapp.com/) and start using!
+
+##Wireframe
+![](./public/images/wireframe.png)
+![](./public/images/wireframe1.png)
 
 
 ##Future Updates
 
 - Actually implement the Facebook API
 - Be able to "like" or "dislike" Facebook friends
-- 
+- Implement an unlike function
+- Better Styling
