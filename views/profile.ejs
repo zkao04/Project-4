@@ -15,7 +15,7 @@
     <% } else { %>
     <h1><span class="fa fa-anchor"></span> Hi! <%= user.facebook.name %></h1>
     <ul>
-      <li>profile photo: <img style="max-width:100px" src="<%= user.avatarUrl %>"></li>
+      <li><img style="max-width:200px" src="<%= user.avatarUrl %>"></li>
       <li>email: <%= user.email %></li>
       <li>age: <%= user.age %></li>
       <li>gender: <%= user.gender %></li>
@@ -30,6 +30,8 @@
     </ul> -->
     <a href="/profile/edit/<%= user._id %>" class="btn btn-default btn-sm">Edit</a>
     <a href="/users/" class="btn btn-default btn-sm">Checkout Other Users</a>
+    <a href="/login/" class="btn btn-default btn-sm">Logout</a>
+
   </div>
   <div class="row">
 <!-- LOCAL INFORMATION -->

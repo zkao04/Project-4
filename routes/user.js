@@ -97,8 +97,6 @@ userRouter.post('/users/like/:id', function(req, res) {
         }
         res.json({success: true, user: user, match: false})
       })
-      
-
     })
   })
 })
